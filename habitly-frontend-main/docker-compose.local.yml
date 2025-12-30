@@ -1,0 +1,27 @@
+# Local development overrides for habitly-frontend
+networks:
+  jetstrive:
+    external: true
+
+services:
+  habitly-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: habitly-frontend-dev
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - BACKEND_URL=http://habitly-backend:8080
+      - BILLING_URL=http://jetstrive-billing:8090
+      - PORT=3000
+    volumes:
+      - .:/app:delegated
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"  # Expose directly for local development
+    networks:
+      - jetstrive
+    depends_on: [ ]  # Remove dependency for local development

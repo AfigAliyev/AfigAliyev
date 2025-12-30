@@ -1,0 +1,27 @@
+networks:
+  jetstrive-network:
+    name: jetstrive-${ENVIRONMENT:-local}
+    external: true
+
+services:
+  habitly-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: habitly-frontend
+    restart: unless-stopped
+    ports:
+      - "${HABITLY_FRONTEND_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - BACKEND_URL=http://habitly-backend:8080
+      - BILLING_URL=http://jetstrive-billing:8090
+    networks:
+      - jetstrive-network
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

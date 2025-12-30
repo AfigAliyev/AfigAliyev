@@ -1,0 +1,36 @@
+# Production overrides for habitly-frontend
+services:
+  habitly-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+        - NEXT_PUBLIC_APP_ENV=${NEXT_PUBLIC_APP_ENV}
+        - NEXT_PUBLIC_ADMIN_URL_HASH=${NEXT_PUBLIC_ADMIN_URL_HASH}
+        - NEXT_PUBLIC_ENABLE_ANALYTICS=${NEXT_PUBLIC_ENABLE_ANALYTICS}
+        - NEXT_PUBLIC_ENABLE_PWA=${NEXT_PUBLIC_ENABLE_PWA}
+        - NEXT_PUBLIC_DEBUG_MODE=${NEXT_PUBLIC_DEBUG_MODE}
+    container_name: habitly-frontend-prod
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_API_URL=https://habitly.jetstrive.com
+      - NEXT_PUBLIC_APP_URL=https://habitly.jetstrive.com
+      - NEXT_PUBLIC_APP_ENV=prod
+      - NEXT_PUBLIC_ADMIN_URL_HASH=${NEXT_PUBLIC_ADMIN_URL_HASH}
+      - NEXT_PUBLIC_ENABLE_ANALYTICS=true
+      - NEXT_PUBLIC_ENABLE_PWA=true
+      - NEXT_PUBLIC_DEBUG_MODE=false
+    labels:
+      - "environment=prod"
+      - "service=habitly-frontend"
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q --spider http://localhost:3000/health || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

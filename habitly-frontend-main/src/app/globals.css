@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-900 to-brand-700 bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-purple {
+    @apply bg-gradient-to-br from-brand-900 to-brand-700;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  /* Typography - Heading Styles */
+  .heading-hero {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .heading-section {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .heading-card {
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+
+  .heading-small {
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Typography - Body Styles */
+  .text-body-large {
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .text-body {
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .text-small {
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+  }
+
+  /* Text Shadows for Enhanced Depth */
+  .text-shadow-soft {
+    text-shadow: 0 2px 8px rgba(137, 133, 233, 0.15);
+  }
+
+  .text-shadow-brand {
+    text-shadow: 0 4px 12px rgba(137, 133, 233, 0.25);
+  }
+
+  /* Additional Letter Spacing Utilities */
+  .tracking-tight-plus {
+    letter-spacing: -0.03em;
+  }
+
+  .tracking-relaxed-plus {
+    letter-spacing: 0.02em;
+  }
+
+  /* Admin Theme Styles */
+  .admin-theme {
+    --admin-brand-primary: #8985E9;
+    --admin-brand-secondary: #EB7BC4;
+    --admin-bg-light-purple: #F6F5FD;
+    --admin-text-primary: #111827;
+    --admin-text-secondary: #4B5563;
+    --admin-border-light: #F3F4F6;
+    --admin-border-medium: #E5E7EB;
+  }
+
+  .admin-card {
+    @apply bg-white rounded-habitly border border-gray-100 shadow-soft transition-all duration-300;
+  }
+
+  .admin-card:hover {
+    @apply shadow-medium;
+  }
+
+  .admin-card-header {
+    @apply bg-gradient-to-r from-purple-light to-white rounded-t-habitly px-6 py-4 border-b border-gray-100;
+  }
+
+  .admin-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200;
+  }
+
+  .admin-badge-success {
+    @apply bg-pastel-green text-green-700;
+  }
+
+  .admin-badge-warning {
+    @apply bg-pastel-yellow text-yellow-700;
+  }
+
+  .admin-badge-error {
+    @apply bg-pastel-red text-red-700;
+  }
+
+  .admin-badge-info {
+    @apply bg-pastel-blue text-blue-700;
+  }
+
+  .admin-badge-premium {
+    @apply bg-pastel-purple text-purple-700;
+  }
+
+  .admin-badge-neutral {
+    @apply bg-gray-100 text-gray-700;
+  }
+
+  .admin-table-header {
+    @apply bg-purple-light/50;
+  }
+
+  .admin-table-row {
+    @apply transition-all duration-200 hover:bg-purple-light/30;
+  }
+
+  .admin-table-cell {
+    @apply px-6 py-4 text-sm text-gray-900;
+  }
+
+  .admin-table-header-cell {
+    @apply px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider;
+  }
+
+  .admin-input {
+    @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-900 focus:border-transparent;
+  }
+
+  .admin-input:disabled {
+    @apply bg-gray-50 cursor-not-allowed opacity-60;
+  }
+
+  .admin-btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .admin-btn-primary {
+    @apply bg-brand-900 text-white hover:bg-brand-800 hover:shadow-brand focus:ring-brand-900;
+  }
+
+  .admin-btn-secondary {
+    @apply bg-purple-light text-brand-900 hover:bg-brand-100 focus:ring-brand-900;
+  }
+
+  .admin-btn-outline {
+    @apply border-2 border-brand-900 text-brand-900 hover:bg-brand-50 focus:ring-brand-900;
+  }
+
+  .admin-btn-ghost {
+    @apply text-gray-700 hover:bg-gray-100 focus:ring-gray-400;
+  }
+
+  .admin-btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+
+  .admin-page {
+    @apply min-h-screen bg-gradient-to-b from-white via-purple-light/20 to-white;
+  }
+
+  .admin-page-header {
+    @apply mb-8;
+  }
+
+  .admin-page-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-2;
+  }
+
+  .admin-page-subtitle {
+    @apply text-base text-gray-600;
+  }
+
+  .admin-section {
+    @apply mb-8;
+  }
+
+  .admin-section-title {
+    @apply text-xl font-semibold text-gray-900 mb-4;
+  }
+
+  .admin-stats-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+
+  .admin-empty-state {
+    @apply flex flex-col items-center justify-center py-12 px-4 text-center;
+  }
+
+  .admin-empty-state-title {
+    @apply text-lg font-semibold text-gray-900 mb-2;
+  }
+
+  .admin-empty-state-description {
+    @apply text-sm text-gray-600 max-w-md;
+  }
+
+  .admin-loading {
+    @apply flex items-center justify-center py-12;
+  }
+
+  .admin-loading-spinner {
+    @apply w-8 h-8 border-4 border-brand-200 border-t-brand-900 rounded-full animate-spin;
+  }
+
+  .admin-error {
+    @apply p-4 bg-pastel-red border border-red-200 rounded-xl;
+  }
+
+  .admin-error-text {
+    @apply text-red-700 text-sm;
+  }
+
+  .admin-pagination {
+    @apply flex items-center justify-center space-x-2 mt-6;
+  }
+
+  .admin-pagination-button {
+    @apply px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-700 font-medium;
+    @apply hover:bg-purple-light hover:border-brand-900 transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-200;
+  }
+
+  .admin-pagination-info {
+    @apply px-4 py-2 text-gray-600 text-sm;
+  }
+}
